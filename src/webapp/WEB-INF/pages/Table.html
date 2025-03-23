@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users table</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Users table</h1>
+    <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.age}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <form action="http://localhost:8080/saveUser" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        <button type="submit">Add</button>
+    </form>
+    <form action="http://localhost:8080/removeUserById" method="POST">
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" required>
+        <button type="submit">Remove</button>
+    </form>
+    <form action="http://localhost:8080/cleanUserTable" method="POST">
+        <button type="submit">Clean table</button>
+    </form>
+    <br>
+    <form action="http://localhost:8080/dropUsersTable" method="POST">
+        <button type="submit">Drop table</button>
+    </form>
+</div>
+</body>
+</html>
