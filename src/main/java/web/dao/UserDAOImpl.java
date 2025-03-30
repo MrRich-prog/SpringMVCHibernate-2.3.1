@@ -1,4 +1,4 @@
-package web.DAO;
+package web.dao;
 
 import org.springframework.stereotype.Repository;
 import web.models.User;
@@ -15,23 +15,7 @@ public class UserDAOImpl implements UserDAO {
     private EntityManager entityManager;
 
     @Override
-    public void createUsersTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS Users (" +
-                "`id` INT NOT NULL AUTO_INCREMENT," +
-                "`name` VARCHAR(45) NOT NULL," +
-                "`age` INT NOT NULL," +
-                "PRIMARY KEY (`id`))";
-        entityManager.createNativeQuery(sql).executeUpdate();
-    }
-
-    @Override
-    public void dropUsersTable() {
-        entityManager.createNativeQuery("DROP TABLE IF EXISTS Users").executeUpdate();
-    }
-
-    @Override
-    public void saveUser(String name, int age) {
-        User user = new User(name, age);
+    public void saveUser(User user) {
         entityManager.persist(user);
     }
 
@@ -52,5 +36,15 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void cleanUsersTable() {
         entityManager.createQuery("DELETE FROM User").executeUpdate();
+    }
+
+    @Override
+    public User getUserById(long id) {
+        return entityManager.find(User.class, id);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        entityManager.merge(user);
     }
 }

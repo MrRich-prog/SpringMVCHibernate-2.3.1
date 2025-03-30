@@ -10,10 +10,6 @@
 
   <packaging>war</packaging>
 
-  <properties>
-    <spring.version>5.3.14</spring.version>
-  </properties>
-
   <dependencies>
 
     <dependency>
@@ -26,7 +22,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>${spring.version}</version>
+      <version>5.3.14</version>
     </dependency>
 
     <dependency>
@@ -59,6 +55,12 @@
       <version>8.0.25</version>
     </dependency>
 
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>2.0.1.Final</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -67,7 +69,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
-          <version>2.4</version>
+          <version>3.3.1</version>
           <configuration>
             <warSourceDirectory>src/webapp</warSourceDirectory>
             <warName>SpringMVCHibernate</warName>

@@ -24,24 +24,17 @@
         </tr>
         </tbody>
     </table>
-    <form action="http://localhost:8080/saveUser" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
-        <button type="submit">Add</button>
-    </form>
-    <form action="http://localhost:8080/removeUserById" method="POST">
-        <label for="id">ID:</label>
-        <input type="number" id="id" name="id" required>
-        <button type="submit">Remove</button>
-    </form>
-    <form action="http://localhost:8080/cleanUserTable" method="POST">
-        <button type="submit">Clean table</button>
+    <br>
+    <form th:method="GET" th:action="@{/AddUserPage}">
+        <button type="submit">Add user</button>
     </form>
     <br>
-    <form action="http://localhost:8080/dropUsersTable" method="POST">
-        <button type="submit">Drop table</button>
+    <form th:method="GET" th:action="@{/UpdateUserPage}">
+        <button type="submit">Update user</button>
+    </form>
+    <br>
+    <form th:method="POST" th:action="@{/cleanUserTable}" >
+        <button type="submit">Clean table</button>
     </form>
 </div>
 </body>
